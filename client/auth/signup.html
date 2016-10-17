@@ -1,0 +1,11 @@
+<div id='signup'>
+  <h1>signup</h1>
+  <form name="signUpForm" ng-submit='signup(signUpForm.$valid)'>
+    <input type='text' name='username' ng-model='user.username' ng-minlength='4'>
+    <input type="password" name='password' ng-model='user.password' ng-minlength='4'>
+    <p ng-show="signUpForm.password.$error.minlength" class="help-block">Password is too short.</p>
+    <p ng-show="signUpForm.username.$error.minlength" class="help-block">Username is too short.</p>
+    <button>signup</button>
+  </form>
+  <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+</div>
