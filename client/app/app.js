@@ -3,18 +3,15 @@ angular.module('zeldaBazaar', [
   'zeldaBazaar.auth',
   'zeldaBazaar.services',
   'zeldaBazaar.store',
+  'zeldaBazaar.invetory',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'app/store/store.html',
-      controller: 'StoreController'
+      templateUrl: 'app/auth/signin.html',
+      controller: 'AuthController'
     })
-    // .when('/', {
-    //   templateUrl: 'app/auth/signup.html',
-    //   controller: 'AuthController'
-    // })
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
@@ -27,15 +24,18 @@ angular.module('zeldaBazaar', [
       templateUrl: 'app/store/store.html',
       controller: 'StoreController'
     })
+    .when('/invetory', {
+      templateUrl: 'app/invetory/invetory.html',
+      controller: 'InvetoryController'
+    })
 
     ;
     // Your code here
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
-  //$httpProvider.interceptors.push('AttachTokens');
-});
-/*
+  $httpProvider.interceptors.push('AttachTokens');
+})
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
   // its job is to stop all out going request
@@ -44,6 +44,7 @@ angular.module('zeldaBazaar', [
   var attach = {
     request: function (object) {
       var jwt = $window.localStorage.getItem('com.zeldaBazaar');
+      console.log('occur');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
@@ -52,6 +53,20 @@ angular.module('zeldaBazaar', [
     }
   };
   return attach;
+})
+.run(function ($rootScope, $location, Auth) {
+  // here inside the run phase of angular, our services and controllers
+  // have just been registered and our app is ready
+  // however, we want to make sure the user is authorized
+  // we listen for when angular is trying to change routes
+  // when it does change routes, we then look for the token in localstorage
+  // and send that token to the server to see if it is a real user or hasn't expired
+  // if it's not valid, we then redirect back to signin/signup
+  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+      $location.path('/signin');
+    }
+  });
 });
-*/
+
 

@@ -15,6 +15,10 @@ module.exports = function (app, express) {
   app.get('/api/store', itemController.getItems);
   app.post('/api/store', itemController.purchaseItem);
 
+
+  app.get('/api/wallet', userController.getRupees);
+  app.get('/api/invetory', itemController.getInvetory);
+
   /*
   app.get('/:code', linksController.navToLink);
 

@@ -1,6 +1,7 @@
 var Q = require('q');
 var jwt = require('jwt-simple');
 var User = require('./userModel.js');
+var Util = require('./../config/util.js');
 
 
 
@@ -24,7 +25,6 @@ module.exports = {
           return user.comparePasswords(password)
             .then(function (foundUser) {
               if (foundUser) {
-                req.session.username = username;
                 var token = jwt.encode(user, 'secret');
                 res.json({token: token});
               } else {
@@ -89,6 +89,12 @@ module.exports = {
           next(error);
         });
     }
+  },
+
+  getRupees: function(req, res, next) {
+    Util.getUserFromReq(req, next).then(function(user) {
+      res.json({rupees: user.rupees});
+    });
   }
 };
 

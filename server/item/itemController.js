@@ -2,6 +2,8 @@ var Q = require('q');
 var jwt = require('jwt-simple');
 var Item = require('./itemModel.js');
 var User = require('./../user/userModel.js');
+var Util = require('./../config/util.js');
+var Promise = require('bluebird');
 
 
 var defaultItems = {
@@ -41,12 +43,20 @@ module.exports = {
     });
   },
   purchaseItem: function (req, res, next) {
+
+
     console.log('buy item', req.body.name);
     Item.findOne({name:req.body.name}).then(function(item) {
-      var username = req.session.username;
-      console.log('search user', username);
+      var username = Util.getUsernameFromReq(req, next);
       User.findOne({username:username}).then(function(user) {
-        console.log('found user', username);
+
+        //check price
+        if (user.rupees < item.cost) {
+          next(new Error('Insufficient Rupees'));
+        }
+
+        user.rupees -= item.cost;
+
         var foundAny = false;
         for( var i = 0; i < user.invetory.length; i++) {
           var dbItem = user.invetory[i];
@@ -68,6 +78,49 @@ module.exports = {
           }
         });
       });
+    });
+  },
+
+  getInvetory: function(req, res, next) {
+    Util.getUserFromReq(req, next).then(function(user) {
+      var idArr = [];
+      var countByItemId = {};
+
+      user.invetory.forEach(function(userItem) {
+        countByItemId[userItem.item_id] = userItem.count;
+        idArr.push(userItem.item_id);
+      });
+
+      Item.find({_id:{$in : idArr}}).then(function(items) {
+        var invetory = [];
+        items.forEach(function(item) {
+          item = JSON.parse(JSON.stringify(item));
+          item.count = countByItemId[item._id];
+          invetory.push(item);
+        });
+        res.json(invetory);
+      });
+
+      /*
+      user.invetory.forEach(function(userItem) {
+        console.log('userItem', userItem);
+        var promise = new Promise(Item.findOne({_id:userItem.item_id}));
+        //promise.then(function(item) { console.log('found ', item)});
+        console.log('promise', promise);
+        promises.push(promise);
+        countByItemId[userItem.item_id] = userItem.count;
+      });
+      Promise.promisifyAll(promises).then(function(userItems) {
+        console.log('user items', userItems);
+        var invetory = [];
+        userItems.forEach(function(userItem) {
+          userItem.count = countByItemId[userItem._id];
+          invetory.push(userItem);
+        });
+        res.json(invetory);
+      });
+      */
+
     });
   }
 }

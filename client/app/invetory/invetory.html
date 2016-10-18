@@ -1,0 +1,13 @@
+<div id='invetory'>
+  <h1>Invetory</h1>
+  <button ng-click='switchToStore()' class='store'>Store</button>
+
+  <div class='row'>
+    <div ng-repeat='item in items' class='item'>
+      <img src= {{item.url}}>
+      <div class='name'>{{item.name}}</div>
+      <div class='count'>{{item.count}}</div>
+    </div>
+  </div>
+
+</div>

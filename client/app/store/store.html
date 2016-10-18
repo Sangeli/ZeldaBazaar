@@ -1,5 +1,12 @@
 <div id='store'>
   <h1>Store</h1>
+  <button ng-click='switchToInvetory()' class='invetory'>Invetory</button>
+
+
+  <span class='wallet'>
+    <img src='https://gamedesignmaterials.files.wordpress.com/2013/11/purplerupee.jpg'>
+    <h1>{{rupees}}</h1>
+  </span>
 
   <div class='row'>
     <div ng-repeat='item in items' class='item'>

@@ -15,6 +15,7 @@ h1 {
   margin-bottom: 10px;
 }
 
+
 .row {
   overflow: hidden;
 }
@@ -28,6 +29,8 @@ h1 {
   width: 10%;
   float: left;
   height: 220px;
+  border-radius: 10px;
+  margin: 5px;
 }
 
 
@@ -38,13 +41,10 @@ h1 {
 }
 
 
-.item .cost {
+.item .cost, .count {
   text-align: center;
   position: relative;
   bottom: 0px
-  vertical-align: bottom;
-text-align: center; //might not be needed
-margin: 0 auto; //might not be needed
 }
 
 
@@ -53,6 +53,32 @@ margin: 0 auto; //might not be needed
   font-weight: bold;
   position: relative;
 }
+
+
+
+
+
+
+
+.invetory {
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+
+.wallet img {
+  width: 10%;
+  float: left;
+}
+
+.wallet {
+  position: relative;
+}
+
+
+
 
 
 
