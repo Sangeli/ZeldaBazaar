@@ -7,7 +7,14 @@ var ItemSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
+  },
+  url: {
+    type: String
+  },
+  cost: {
+    type: Number
   }
+
 });
 
 

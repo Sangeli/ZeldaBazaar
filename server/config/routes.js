@@ -1,9 +1,18 @@
 var userController = require('../user/userController.js');
+var itemController = require('../item/itemController.js');
+
+console.log('itemController', itemController);
 //var helpers = require('./helpers.js'); // our custom middleware
 
 module.exports = function (app, express) {
   app.get('/', userController.signin);
 
+
+  app.post('/api/users/signin', userController.signin);
+  app.post('/api/users/signup', userController.signup);
+
+
+  app.get('/api/store', itemController.getItems);
 
   /*
   app.get('/:code', linksController.navToLink);

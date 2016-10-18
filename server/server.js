@@ -3,10 +3,11 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-//mongoose.connect('mongodb://localhost/ZeldaBazaar');
+mongoose.connect('mongodb://localhost/zeldaBazaar');
+
 
 // configure our server with all the middleware and routing
-//require('./config/middleware.js')(app, express);
+require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
 
 // start listening to requests on port 8000

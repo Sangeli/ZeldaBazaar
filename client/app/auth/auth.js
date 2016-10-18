@@ -13,7 +13,7 @@ angular.module('zeldaBazaar.auth', [])
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.zeldaBazaar', token);
-        $location.path('/links');
+        $location.path('/store');
       })
       .catch(function (error) {
         console.error(error);
@@ -27,7 +27,7 @@ angular.module('zeldaBazaar.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.zeldaBazaar', token);
-        $location.path('/links');
+        $location.path('/store');
       })
       .catch(function (error) {
         console.error(error);
