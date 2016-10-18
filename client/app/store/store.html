@@ -1,5 +1,7 @@
 <div id='store'>
   <h1>Store</h1>
+
+  <button ng-click='signout()'>Signout</button>
   <button ng-click='switchToInvetory()' class='invetory'>Invetory</button>
 
 
@@ -12,7 +14,7 @@
     <div ng-repeat='item in items' class='item'>
       <img src= {{item.url}}>
       <div class='name'>{{item.name}}</div>
-      <div class='cost'>{{item.cost}}</div>
+      <div class='cost'>{{item.cost}} Rupees</div>
       <button ng-click='purchase(item)'>purchase</button>
     </div>
   </div>

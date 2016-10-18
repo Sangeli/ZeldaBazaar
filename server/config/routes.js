@@ -1,7 +1,6 @@
 var userController = require('../user/userController.js');
 var itemController = require('../item/itemController.js');
 
-console.log('itemController', itemController);
 //var helpers = require('./helpers.js'); // our custom middleware
 
 module.exports = function (app, express) {

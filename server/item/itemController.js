@@ -15,11 +15,35 @@ var defaultItems = {
     url: 'http://i.imgur.com/m2llXZB.gif',
     cost: 5
   },
+  'Bomb': {
+    url: 'http://i.imgur.com/u7o0Ap8.png',
+    cost: 3
+  },
+  'Arrow': {
+    url: 'http://i.imgur.com/txyXU3F.jpg',
+    cost: 2
+  },
+  'Red Potion': {
+    url: 'http://i.imgur.com/NFLzJdJ.png',
+    cost: 50
+  },
+  'Green Potion': {
+    url: 'http://i.imgur.com/iDUal8i.png',
+    cost: 50
+  },
+  'Deku Nut': {
+    url: 'http://i.imgur.com/k2k5Epc.png',
+    cost: 2
+  },
+  'Bombchu': {
+    url: 'http://i.imgur.com/LHCUSHf.png',
+    cost: 5
+  }
 };
 
 
 var initialize = function() {
-  for (var itemName in defaultItems) {
+  for (let itemName in defaultItems) {
     Item.findOne({name: itemName}).then(function(item) {
       if (item) { return; }
       item = defaultItems[itemName];
@@ -27,7 +51,7 @@ var initialize = function() {
               name: itemName,
               url: item.url,
               cost: item.cost
-            });
+      });
     });
   }
 }
@@ -38,7 +62,6 @@ initialize();
 module.exports = {
   getItems: function (req, res, next) {
     Item.find().then(function(items) {
-      console.log('sending json');
       res.json(items);
     });
   },
@@ -51,8 +74,12 @@ module.exports = {
       User.findOne({username:username}).then(function(user) {
 
         //check price
+        console.log('ruppees', user.rupees);
+        console.log('cost', item.cost);
         if (user.rupees < item.cost) {
           next(new Error('Insufficient Rupees'));
+          res.end();
+          return;
         }
 
         user.rupees -= item.cost;
@@ -60,8 +87,7 @@ module.exports = {
         var foundAny = false;
         for( var i = 0; i < user.invetory.length; i++) {
           var dbItem = user.invetory[i];
-          console.log('compare', item._id, dbItem.item_id);
-          if (dbItem.item_id == item._id ) {
+          if (dbItem.item_id.toString() === item._id.toString() ) {
             foundAny = true;
             dbItem.count ++;
             break;
@@ -73,12 +99,11 @@ module.exports = {
         user.save(function (err, savedItem) {
           if (err) {
             console.log('error on save', err);
-          } else {
-            console.log('saved', savedItem)
           }
         });
       });
     });
+    res.end();
   },
 
   getInvetory: function(req, res, next) {

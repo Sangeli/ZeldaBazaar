@@ -8,7 +8,6 @@ angular.module('zeldaBazaar.services', [])
       url: '/api/store'
     })
     .then( function (resp) {
-      console.log('data', resp.data);
       return resp.data;
     }, function (err) {
       console.log('getItems error', err);
@@ -21,7 +20,6 @@ angular.module('zeldaBazaar.services', [])
       url: '/api/invetory'
     })
     .then( function (resp) {
-      console.log('invetory data', resp.data);
       return resp.data;
     }, function (err) {
       console.log('getInvetory error', err);
@@ -35,7 +33,7 @@ angular.module('zeldaBazaar.services', [])
       data: {name: itemName}
     })
     .then(function(resp) {
-      return resp;
+      return resp.dta;
     });
   };
 
@@ -45,7 +43,6 @@ angular.module('zeldaBazaar.services', [])
       url: '/api/wallet'
     })
     .then( function (resp) {
-      console.log('wallet data', resp.data);
       return resp.data.rupees;
     }, function (err) {
       console.log('getWallet error', err);

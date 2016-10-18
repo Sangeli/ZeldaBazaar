@@ -49,7 +49,6 @@ module.exports = {
         if (user) {
           next(new Error('User already exist!'));
         } else {
-          console.log('creating user', username);
           // make a new user if not one
           return createUser({
             username: username,

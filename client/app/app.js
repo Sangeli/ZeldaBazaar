@@ -44,7 +44,6 @@ angular.module('zeldaBazaar', [
   var attach = {
     request: function (object) {
       var jwt = $window.localStorage.getItem('com.zeldaBazaar');
-      console.log('occur');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }

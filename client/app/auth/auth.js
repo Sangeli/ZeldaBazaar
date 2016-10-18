@@ -33,4 +33,8 @@ angular.module('zeldaBazaar.auth', [])
         console.error(error);
       });
   };
+  
+  $scope.signout = function() {
+    Auth.signout();
+  }
 });
