@@ -1,7 +1,16 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
+var session = require('express-session');
+
 var app = express();
+
+app.use(session({
+  secret: 'Zelda',
+  resave: false,
+  saveUninitialized: true
+}));
+
 
 mongoose.connect('mongodb://localhost/zeldaBazaar');
 

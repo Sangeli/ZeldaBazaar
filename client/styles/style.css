@@ -15,6 +15,10 @@ h1 {
   margin-bottom: 10px;
 }
 
+.row {
+  overflow: hidden;
+}
+
 
 
 .item {
@@ -23,23 +27,31 @@ h1 {
   border-color: #0000ff;
   width: 10%;
   float: left;
+  height: 220px;
 }
 
 
 .item img{
   width: 100%;
   position: relative;
+  vertical-align: middle;
 }
 
 
 .item .cost {
   text-align: center;
+  position: relative;
+  bottom: 0px
+  vertical-align: bottom;
+text-align: center; //might not be needed
+margin: 0 auto; //might not be needed
 }
 
 
 .item .name {
   text-align: center;
   font-weight: bold;
+  position: relative;
 }
 
 

@@ -15,11 +15,11 @@ angular.module('zeldaBazaar.services', [])
     });
   };
 
-  var addOne = function(link) {
+  var buyOne = function(itemName) {
     return $http({
       method: 'POST',
       url: '/api/store',
-      data: {url: link}
+      data: {name: itemName}
     })
     .then(function(resp) {
       return resp;
@@ -28,7 +28,7 @@ angular.module('zeldaBazaar.services', [])
 
   return {
     getItems: getItems,
-    addOne: addOne
+    buyOne: buyOne
   };
   // Your code here
 })

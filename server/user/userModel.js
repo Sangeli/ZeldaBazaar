@@ -15,6 +15,15 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
+  invetory: [ {
+    item_id: {
+      type: String,
+      ref: 'Item'
+    },
+    count: Number
+    }
+  ]
 });
 
 

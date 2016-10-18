@@ -1,10 +1,13 @@
 <div id='store'>
   <h1>Store</h1>
 
-  <div ng-repeat='item in items' class='item'>
-    <img src= {{item.url}}>
-    <div class='name'>{{item.name}}</div>
-    <div class='cost'>{{item.cost}}</div>
+  <div class='row'>
+    <div ng-repeat='item in items' class='item'>
+      <img src= {{item.url}}>
+      <div class='name'>{{item.name}}</div>
+      <div class='cost'>{{item.cost}}</div>
+      <button ng-click='purchase(item)'>purchase</button>
+    </div>
   </div>
 
 </div>
