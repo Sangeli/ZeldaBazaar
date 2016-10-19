@@ -21,7 +21,7 @@ var UserSchema = new mongoose.Schema({
     default: 500
   },
   
-  invetory: [ {
+  inventory: [ {
     item_id: {
       type: 'ObjectId',
       ref: 'Item'

@@ -1,8 +1,7 @@
-<div id='store'>
-
+<div id='inventory'>
 
   <div class='wallet'>
-    <h1>Store</h1>
+    <h1>Inventory </h1>
     <img src='https://gamedesignmaterials.files.wordpress.com/2013/11/purplerupee.jpg'>
     <h1>{{rupees}}</h1>
   </div>
@@ -10,7 +9,7 @@
 
 <ul>
   <li><a ng-click='signout()'>Sign Out</a></li>
-  <li><a ng-click='switchToInventory()'>Inventory</a></li>
+  <li><a ng-click='switchToStore()'>Store</a></li>
 </ul>
 
   <!-- Page Content -->
@@ -19,10 +18,9 @@
       <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat='item in items'>
         <div class="thumbnail">
           <img src={{item.url}}>
-          <div class="caption">
-            <h4 class="pull-right" class="cost">{{item.cost}} Rupees</h4>
+          <div class="inventory">
             <h4><a href="" class="name">{{item.name}}</a></h4>
-            <button ng-click='purchase(item)'>purchase</button>
+            <h4 class="pull-right" class="count">x{{item.count}}</h4>
           </div>
         </div>
       </div>

@@ -21,8 +21,8 @@ angular.module('zeldaBazaar.store', [])
     });
   }
 
-  $scope.switchToInvetory = function() {
-    $location.path('/invetory');
+  $scope.switchToInventory = function() {
+    $location.path('/inventory');
   }
 
   $scope.signout = function() {

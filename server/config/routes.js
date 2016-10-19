@@ -16,7 +16,7 @@ module.exports = function (app, express) {
 
 
   app.get('/api/wallet', userController.getRupees);
-  app.get('/api/invetory', itemController.getInvetory);
+  app.get('/api/inventory', itemController.getInventory);
 
   /*
   app.get('/:code', linksController.navToLink);

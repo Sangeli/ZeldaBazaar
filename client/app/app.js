@@ -3,7 +3,7 @@ angular.module('zeldaBazaar', [
   'zeldaBazaar.auth',
   'zeldaBazaar.services',
   'zeldaBazaar.store',
-  'zeldaBazaar.invetory',
+  'zeldaBazaar.inventory',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -24,9 +24,9 @@ angular.module('zeldaBazaar', [
       templateUrl: 'app/store/store.html',
       controller: 'StoreController'
     })
-    .when('/invetory', {
-      templateUrl: 'app/invetory/invetory.html',
-      controller: 'InvetoryController'
+    .when('/inventory', {
+      templateUrl: 'app/inventory/inventory.html',
+      controller: 'InventoryController'
     })
 
     ;

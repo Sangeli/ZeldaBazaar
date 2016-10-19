@@ -14,15 +14,15 @@ angular.module('zeldaBazaar.services', [])
     });
   };
 
-  var getInvetory = function() {
+  var getInventory = function() {
     return $http({
       method: 'GET',
-      url: '/api/invetory'
+      url: '/api/inventory'
     })
     .then( function (resp) {
       return resp.data;
     }, function (err) {
-      console.log('getInvetory error', err);
+      console.log('getInventory error', err);
     });
   }
 
@@ -33,7 +33,7 @@ angular.module('zeldaBazaar.services', [])
       data: {name: itemName}
     })
     .then(function(resp) {
-      return resp.dta;
+      return resp;
     });
   };
 
@@ -52,7 +52,7 @@ angular.module('zeldaBazaar.services', [])
   return {
     getItems: getItems,
     buyOne: buyOne,
-    getInvetory: getInvetory,
+    getInventory: getInventory,
     getWallet: getWallet
   };
   // Your code here

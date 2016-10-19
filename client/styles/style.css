@@ -1,3 +1,10 @@
+title {
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+}
+
 body {
   margin: 0;
   margin-top: 10px;
@@ -16,153 +23,77 @@ h1 {
 }
 
 
-.row {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
+  background-color: #333;
 }
 
-
-
-.item {
-  border: 5px;
-  border-style: solid;
-  border-color: #0000ff;
-  width: 10%;
+li {
   float: left;
-  height: 220px;
-  border-radius: 10px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.inventory {
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+}
+
+.inventory h4 {
   margin: 5px;
-}
-
-
-.item img{
-  width: 100%;
-  position: relative;
-  vertical-align: middle;
-}
-
-
-.item .cost, .count {
-  text-align: center;
-  position: relative;
-  bottom: 0px
-}
-
-
-.item .name {
-  text-align: center;
-  font-weight: bold;
-  position: relative;
-}
-
-
-
-
-
-
-
-.invetory {
   font-size: 24px;
-  padding: 5px;
-  border-radius: 5px;
-  margin: 5px;
 }
-
 
 .wallet img {
   width: 10%;
-  float: left;
 }
 
 .wallet {
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+  margin-left: 35%;
+}
+
+.thumbnail {
+  height: 450px;
+}
+
+
+.thumbnail img{
+  border-radius: 10px;
   position: relative;
 }
 
-
-
-
-
-
-
-.navigation {
-  width: 100%;
-  height: 40px;
-  background-color: #eee;
-}
-
-.navigation ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.navigation li {
-  float: left;
-}
-
-.navigation .logout {
-  float: right;
-}
-
-.navigation li a , .logout {
-  width: 100px;
-  height: 20px;
-  line-height: 20px;
-  padding: 10px;
-  display: block;
+.caption { 
+  position: static;
+  margin-bottom: : 10px;
   text-align: center;
 }
 
-.navigation li a:hover {
-  background-color: #ddd;
-}
 
-.navigation li a.selected {
-  background-color: #ccc;
-}
+
 
 #container {
   clear: both;
   margin-top: 10px;
-}
-
-.link {
-  clear: both;
-  margin-bottom: 5px;
-  padding: 5px;
-  min-height: 50px;
-}
-
-.link:hover {
-  background-color: #efe;
-}
-
-.link img {
-  float: left;
-  margin: 0 5px;
-}
-
-.link .visits {
-  float: right;
-  margin-right: 10px;
-  margin-left: 20px;
-}
-
-.link .visits .count {
-  font-size: 46px;
-  font-weight: 600;
-}
-
-.link .title {
-  font-weight: 600;
-}
-
-.link .original {
-  color: #aaa;
-  font-size: 12px;
-}
-
-.link .info {
-  margin-left: 55px;
 }
 
 form {
@@ -175,31 +106,4 @@ form input[type=text], form input[type=password] {
   font-size: 13px;
   padding: 5px;
   margin-bottom: 5px;
-}
-
-.error {
-  background-color: #fee;
-  color: #a33;
-  padding: 10px;
-  margin: 0 10px;
-}
-
-.creator {
-  height: 50px;
-}
-
-.creator form {
-  float: left;
-  height: 80px;
-}
-
-.creator img.spinner {
-  height: 46px;
-  margin-bottom: 5px;
-  padding: 10px;
-  display: none;
-}
-
-.creator .message {
-  clear: both;
 }

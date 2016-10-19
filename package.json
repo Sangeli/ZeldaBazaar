@@ -9,8 +9,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
-    "start": "gulp start",
+    "start": "gulp start", 
     "start:es6": "gulp start:es6",
     "test": "gulp karma",
     "test:es6": "gulp karma:es6",
