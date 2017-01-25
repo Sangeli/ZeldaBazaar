@@ -9,7 +9,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "gulp start", 
+    "start": "node ./server/server.js", 
     "start:es6": "gulp start:es6",
     "test": "gulp karma",
     "test:es6": "gulp karma:es6",
